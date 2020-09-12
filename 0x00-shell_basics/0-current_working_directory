@@ -1,2 +1,2 @@
-#!bin/bash
-pwd \n why?
+#!/bin/bash
+pwd 
