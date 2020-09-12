@@ -1,0 +1,1 @@
+**IN this directory are different scripts with basic shell functions.**
