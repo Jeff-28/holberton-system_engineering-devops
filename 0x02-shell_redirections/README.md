@@ -1,0 +1,1 @@
+**This directory contains different tasks and scripts about Shell input and output redirections.**
