@@ -1,2 +1,2 @@
 #!/bin/bash
-fgrep Suetonius iacta
+grep Suetonius iacta
