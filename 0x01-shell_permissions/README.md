@@ -12,5 +12,5 @@
 * [adduser](https://www.freebsd.org/cgi/man.cgi?adduser(8)) - command	for adding new users
 * [groupadd](https://linux.die.net/man/8/groupadd) - create a new group
 
-### Resource
+## Resource
 * [Permissions](http://linuxcommand.org/lc3_lts0090.php)
