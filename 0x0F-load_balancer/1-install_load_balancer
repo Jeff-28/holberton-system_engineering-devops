@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# A script that configures a new Ubuntu machine to respect these requirements:
+#   Configure HAproxy with version equal or greater than 1.5 so that it send
+#       traffic to web-01 and web-02
+#   Distribute requests using a roundrobin algorithm
+#   Make sure that HAproxy can be managed via an init script
+#   Make sure that your servers are configured with the right hostnames
+
+sudo apt-get -y update
+sudo apt install haproxy -y
+sudo sed -i "$ aENABLED=1" /etc/default/haproxy
+lines="$ a\\\tbalance roundrobin\nfrontend http\n\tbind *:80\n\tdefault_backend webservers\n\n\
+backend webservers\n\tserver 2408-web-01 35.237.62.23:80 check\n\t\
+server 2408-web-02 35.229.43.70:80 check\n"
+sudo sed -ie "${lines}" /etc/haproxy/haproxy.cfg
+sudo service haproxy start
