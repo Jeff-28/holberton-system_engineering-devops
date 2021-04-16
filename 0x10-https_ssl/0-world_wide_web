@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# A script that accepts 2 arguments:
+#   domain:
+#       type: string
+#       what: domain name to audit
+#       mandatory: yes
+#   subdomain:
+#       type: string
+#       what: specific subdomain to audit
+#       mandatory: no
+# Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+# When only the parameter domain is provided, display information for its
+#   subdomains www, lb-01, web-01 and web-02 - in this specific order
+# When passing domain and subdomain parameters, display information for the
+#   specified subdomain
+
+print_info ()
+{
+    dom="$1"
+    subdom="$2"
+    dig "$subdom.$dom" | awk '/ANSWER SECTION:/ {getline; printf "The subdomain %s is a %s record and points to %s\n", name, $4, $5}' name="$subdom"
+}
+
+for subdom in "www" "lb-01" "web-01" "web-02"
+do
+    if [ -z "$2" ] || [ "$2" == "$subdom" ] ;
+    then
+        print_info "$1" "$subdom"
+    fi
+done
