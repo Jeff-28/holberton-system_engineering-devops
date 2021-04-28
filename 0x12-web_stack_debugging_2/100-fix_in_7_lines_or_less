@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-# A script that configures a server to fit the requirements:
-#   nginx must be running as 'nginx' user
-#   nginx must be listening on all active IPs on port 8080
+# Sets NGINX to run as the nginx user
 pkill apache
 chmod 700 /etc/nginx/nginx.conf
 chown nginx:nginx /etc/nginx/nginx.conf
