@@ -18,7 +18,7 @@ if __name__ == "__main__":
     todoList = response.json()
 
     with open('{}.csv'.format(argv[1]), 'w', newline="") as myfile:
-        writer = csv.writer(myfile)
+        writer = csv.writer(myfile, quoting=csv.QUOTE_ALL)
         for toDo in todoList:
             obj = [toDo.get('userId'), user.get('username'),
                    toDo.get('completed'), toDo.get('title')]
