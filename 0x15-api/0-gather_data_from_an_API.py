@@ -22,7 +22,7 @@ if __name__ == "__main__":
             if key == 'completed' and value is True:
                 tasksDone += 1
                 titleList.append(toDo.get('title'))
-    print('Employee {} is done with tasks({}/{}):\
-            '.format(user.get('name'), tasksDone, len(todoList)))
-    for title in titleList:
-        print('\t{}'.format(title))
+    print('Employee {} is done with tasks({}/{}):'.format(user.get('name'),
+                                                          tasksDone,
+                                                          len(todoList)))
+    print('\n'.join('\t {}'.format(title) for title in titleList))
