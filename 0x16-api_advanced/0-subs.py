@@ -3,7 +3,7 @@
 import requests
 
 
-def number_of_subscribers(sub):
+def number_of_subscribers(subreddit):
     """Returns the number of subscribers for a given subreddit.
     If an invalid subreddit is given, the function should return 0"""
     site = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
