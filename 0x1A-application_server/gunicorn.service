@@ -10,7 +10,7 @@ Group = ubuntu
 WorkingDirectory = /home/ubuntu/AirBnB_clone_v4
 ExecStartPre = /bin/mkdir /run/hbnb_app
 ExecStartPre = /bin/chown -R hbnb_app:hbnb_app /run/hbnb_app
-ExecStart = gunicorn -b 0.0.0.0:5003 web_dynamic.2-hbnb:app --pid /run/hbnb_app/hbnb_app.pid
+ExecStart = HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db gunicorn -b 0.0.0.0:5003 web_dynamic.2-hbnb:app --pid /run/hbnb_app/hbnb_app.pid
 ExecReload = /bin/kill -s HUP $MAINPID
 ExecStop = /bin/kill -s TERM $MAINPID
 ExecStopPost = /bin/rm -rf /run/hbnb_app
