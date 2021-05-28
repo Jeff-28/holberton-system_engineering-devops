@@ -1,0 +1,20 @@
+[Unit]
+Description = hbnb_app
+After = network.target
+
+[Service]
+PermissionsStartOnly = true
+PIDFile = /run/hbnb_app/hbnb_app.pid
+User = ubuntu
+Group = ubuntu
+WorkingDirectory = /home/ubuntu/AirBnB_clone_v4
+ExecStartPre = /bin/mkdir /run/hbnb_app
+ExecStartPre = /bin/chown -R hbnb_app:hbnb_app /run/hbnb_app
+ExecStart = gunicorn -b 0.0.0.0:5003 web_dynamic.2-hbnb:app --pid /run/hbnb_app/hbnb_app.pid
+ExecReload = /bin/kill -s HUP $MAINPID
+ExecStop = /bin/kill -s TERM $MAINPID
+ExecStopPost = /bin/rm -rf /run/hbnb_app
+PrivateTmp = false
+
+[Install]
+WantedBy = multi-user.target
